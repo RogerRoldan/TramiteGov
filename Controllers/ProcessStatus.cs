@@ -17,11 +17,18 @@ namespace TramiteGov.Controllers
         {
             string Url = BaseUrl + idInstanced + "/activity-instances";
             var response = client.GetAsync(Url).Result.Content.ReadAsStringAsync().Result;
-            var ResponseRequest = JsonConvert.DeserializeObject<dynamic>(response).childActivityInstances[0].name;
+            var ResponseRequest = JsonConvert.DeserializeObject<dynamic>(response);
             
-            string ResponseRequestString = Convert.ToString(ResponseRequest);
+            if (ResponseRequest.type == "InvalidRequestException")
+            {
+                return NotFound();
+            }
+            
+            var ProcessStatus = ResponseRequest.childActivityInstances[0].name;
 
-            return Ok(ResponseRequestString);
+            string ProcessStatusString = Convert.ToString(ProcessStatus);
+
+            return Ok(ProcessStatusString);
         }
     }
 }
