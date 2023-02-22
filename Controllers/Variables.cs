@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace TramiteGov.Controllers
 {
@@ -16,7 +17,13 @@ namespace TramiteGov.Controllers
         {
             string Url = BaseUrl + idInstanced + "/variables";
             var Response = client.GetAsync(Url).Result.Content.ReadAsStringAsync().Result;
-
+            
+            var ResponseRequest = JsonConvert.DeserializeObject<dynamic>(Response);
+            
+            if (Convert.ToString(ResponseRequest.type) == "NullValueException")
+            {
+                return NotFound();
+            }
 
             return Ok(Response);
         }
