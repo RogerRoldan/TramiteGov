@@ -14,18 +14,12 @@ namespace TramitesGov.Controllers
             HttpClient client = new HttpClient();
             string BaseUrl = "http://localhost:8080/engine-rest/process-definition/key/";
             string NameProcess = "TramiteGov";
-
+        
+        //Iniciar una instancia de proceso
         [HttpPost]
         public IActionResult Post([FromBody] VariableInitial variable)
         {          
             string Url = BaseUrl + NameProcess + "/start";
-
-            //VariableInitial variableInitial = new VariableInitial();
-            //variableInitial.variables = new Dictionary<string, AtributeInitial>();
-            //variableInitial.Add("Identificacion", "", "string");
-            //variableInitial.Add("Nombre", "", "string");
-            //variableInitial.Add("Apellido", "", "string");
-            //variableInitial.Add("Correo", "", "string");
 
             var json = JsonConvert.SerializeObject(variable);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
