@@ -30,7 +30,7 @@ namespace TramiteGov.Controllers
             string ProcessStatusString = Convert.ToString(ProcessStatus);
 
             if(ProcessStatus == "Respuesta Final") {
-                return Ok(ProcessStatusString + ",https://www.google.com/url?sa=i&url=https%3A%2F%2Fsasoftco.com%2F&psig=AOvVaw3HNX_0u2AMf-qilxVmT9N-&ust=1677194812779000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCOjSlNqjqv0CFQAAAAAdAAAAABAE");
+                return Ok(ProcessStatusString + ",https://drive.google.com/file/d/1ZBc62dNh-jcwNu2tPDt7tM_3p95a7JK4/view?usp=sharing");
             }
             else { 
             return Ok(ProcessStatusString + ",null");            
