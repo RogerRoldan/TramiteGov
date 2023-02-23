@@ -52,7 +52,7 @@ namespace TramiteGov.Controllers
             foreach (TaskCamunda task in tasks)
             {
                 taskList.Add(new { Id = task.id, Name = task.name, InstacedId = task.processInstanceId, task
-                .formKey});
+                .description });
             }
             
             return Content(JsonConvert.SerializeObject(taskList), "application/json", Encoding.UTF8);

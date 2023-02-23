@@ -57,7 +57,8 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_12e4538" sourceRef="Activity_1v3coe4" targetRef="Activity_1cvhcqk" />
     <bpmn:sequenceFlow id="Flow_13gvu72" sourceRef="Activity_1cvhcqk" targetRef="Gateway_0apnq6g" />
-    <bpmn:userTask id="Activity_1cvhcqk" name="Aprobación de respuesta" camunda:formKey="/formularioApRespuesta" camunda:assignee="${GrupoTecnico}">
+    <bpmn:userTask id="Activity_1cvhcqk" name="Aprobación de respuesta" camunda:assignee="${GrupoTecnico}">
+      <bpmn:documentation>/formularioApRespuesta</bpmn:documentation>
       <bpmn:incoming>Flow_12e4538</bpmn:incoming>
       <bpmn:outgoing>Flow_13gvu72</bpmn:outgoing>
     </bpmn:userTask>
@@ -81,7 +82,8 @@
       <bpmn:incoming>Flow_0u0an24</bpmn:incoming>
       <bpmn:outgoing>Flow_0xu97ex</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:userTask id="Activity_1v3coe4" name="Informe sobre respuesta del tramite" camunda:formKey="/formularioRtramite" camunda:assignee="${Tecnico}">
+    <bpmn:userTask id="Activity_1v3coe4" name="Informe sobre respuesta del tramite" camunda:assignee="${Tecnico}">
+      <bpmn:documentation>/formularioRtramite</bpmn:documentation>
       <bpmn:incoming>Flow_04xvhry</bpmn:incoming>
       <bpmn:incoming>Flow_0xu97ex</bpmn:incoming>
       <bpmn:outgoing>Flow_12e4538</bpmn:outgoing>
@@ -91,12 +93,14 @@
       <bpmn:outgoing>Flow_09bzhlz</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_09bzhlz" sourceRef="Activity_1du16bi" targetRef="Event_0yrj8d2" />
-    <bpmn:userTask id="Activity_1emnqjc" name="Asignación de Técnico" camunda:formKey="/formularioAtecnico" camunda:assignee="${GrupoTecnico}">
+    <bpmn:userTask id="Activity_1emnqjc" name="Asignación de Técnico" camunda:assignee="${GrupoTecnico}">
+      <bpmn:documentation>/formularioAtecnico</bpmn:documentation>
       <bpmn:extensionElements />
       <bpmn:incoming>Flow_0tpk49s</bpmn:incoming>
       <bpmn:outgoing>Flow_04xvhry</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Activity_01el378" name="Asignación de grupo Técnico" camunda:formKey="/formularioAgrupo" camunda:assignee="AsesorTramites">
+    <bpmn:userTask id="Activity_01el378" name="Asignación de grupo Técnico" camunda:assignee="AsesorTramites">
+      <bpmn:documentation>/formularioAgrupo</bpmn:documentation>
       <bpmn:incoming>Flow_1maap0b</bpmn:incoming>
       <bpmn:outgoing>Flow_0tpk49s</bpmn:outgoing>
     </bpmn:userTask>
