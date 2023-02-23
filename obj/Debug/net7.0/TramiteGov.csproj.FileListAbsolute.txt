@@ -32,3 +32,37 @@ C:\Users\Roger Roldan\Desktop\balzorprueba\TramiteGov\obj\Debug\net7.0\refint\Tr
 C:\Users\Roger Roldan\Desktop\balzorprueba\TramiteGov\obj\Debug\net7.0\TramiteGov.pdb
 C:\Users\Roger Roldan\Desktop\balzorprueba\TramiteGov\obj\Debug\net7.0\TramiteGov.genruntimeconfig.cache
 C:\Users\Roger Roldan\Desktop\balzorprueba\TramiteGov\obj\Debug\net7.0\ref\TramiteGov.dll
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\bin\Debug\net7.0\appsettings.Development.json
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\bin\Debug\net7.0\appsettings.json
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\bin\Debug\net7.0\TramiteGov.exe
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\bin\Debug\net7.0\TramiteGov.deps.json
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\bin\Debug\net7.0\TramiteGov.runtimeconfig.json
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\bin\Debug\net7.0\TramiteGov.dll
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\bin\Debug\net7.0\TramiteGov.pdb
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\bin\Debug\net7.0\Microsoft.OpenApi.dll
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\obj\Debug\net7.0\TramiteGov.csproj.AssemblyReference.cache
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\obj\Debug\net7.0\TramiteGov.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\obj\Debug\net7.0\TramiteGov.AssemblyInfoInputs.cache
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\obj\Debug\net7.0\TramiteGov.AssemblyInfo.cs
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\obj\Debug\net7.0\TramiteGov.csproj.CoreCompileInputs.cache
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\obj\Debug\net7.0\TramiteGov.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\obj\Debug\net7.0\TramiteGov.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\obj\Debug\net7.0\staticwebassets\msbuild.TramiteGov.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\obj\Debug\net7.0\staticwebassets\msbuild.build.TramiteGov.props
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.TramiteGov.props
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.TramiteGov.props
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\obj\Debug\net7.0\scopedcss\bundle\TramiteGov.styles.css
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\obj\Debug\net7.0\TramiteGov.csproj.CopyComplete
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\obj\Debug\net7.0\TramiteGov.dll
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\obj\Debug\net7.0\refint\TramiteGov.dll
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\obj\Debug\net7.0\TramiteGov.pdb
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\obj\Debug\net7.0\TramiteGov.genruntimeconfig.cache
+C:\Users\Roger Roldan\Desktop\Gov CorpoColombia\TramiteGov\obj\Debug\net7.0\ref\TramiteGov.dll
