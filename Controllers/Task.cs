@@ -51,8 +51,11 @@ namespace TramiteGov.Controllers
             List<object> taskList = new List<object>();
             foreach (TaskCamunda task in tasks)
             {
-                taskList.Add(new { Id = task.id, Name = task.name, InstacedId = task.processInstanceId, task
-                .description });
+                taskList.Add(new { 
+                    Id = task.id, 
+                    Name = task.name, 
+                    InstacedId = task.processInstanceId,
+                    description = task.description });
             }
             
             return Content(JsonConvert.SerializeObject(taskList), "application/json", Encoding.UTF8);

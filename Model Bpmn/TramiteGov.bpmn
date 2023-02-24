@@ -56,10 +56,6 @@
       <bpmn:outgoing>Flow_1maap0b</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_12e4538" sourceRef="Activity_1v3coe4" targetRef="Activity_1cvhcqk" />
-    <bpmn:endEvent id="Event_0yrj8d2" name="Solicitud Ambiental Finalizada">
-      <bpmn:extensionElements />
-      <bpmn:incoming>Flow_09bzhlz</bpmn:incoming>
-    </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_18agn3l" name="Si" sourceRef="Gateway_0apnq6g" targetRef="Activity_1du16bi">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${JefeRespuesta=="yes"}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
@@ -77,10 +73,6 @@
       <bpmn:incoming>Flow_0xu97ex</bpmn:incoming>
       <bpmn:outgoing>Flow_12e4538</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Activity_1du16bi" name="Respuesta Final" camunda:assignee="Usuario">
-      <bpmn:incoming>Flow_18agn3l</bpmn:incoming>
-      <bpmn:outgoing>Flow_09bzhlz</bpmn:outgoing>
-    </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_09bzhlz" sourceRef="Activity_1du16bi" targetRef="Event_0yrj8d2" />
     <bpmn:userTask id="Activity_01el378" name="Asignación de grupo Técnico" camunda:assignee="AsesorTramites">
       <bpmn:documentation>/formularioAgrupo</bpmn:documentation>
@@ -93,17 +85,25 @@
       <bpmn:incoming>Flow_0tpk49s</bpmn:incoming>
       <bpmn:outgoing>Flow_04xvhry</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_13gvu72" sourceRef="Activity_1cvhcqk" targetRef="Gateway_0apnq6g" />
+    <bpmn:exclusiveGateway id="Gateway_0apnq6g" name="¿Aprobar Respuesta?">
+      <bpmn:incoming>Flow_13gvu72</bpmn:incoming>
+      <bpmn:outgoing>Flow_18agn3l</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0u0an24</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
     <bpmn:userTask id="Activity_1cvhcqk" name="Aprobación de respuesta" camunda:assignee="${GrupoTecnico}">
       <bpmn:documentation>/formularioApRespuesta</bpmn:documentation>
       <bpmn:incoming>Flow_12e4538</bpmn:incoming>
       <bpmn:outgoing>Flow_13gvu72</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:exclusiveGateway id="Gateway_0apnq6g">
-      <bpmn:incoming>Flow_13gvu72</bpmn:incoming>
-      <bpmn:outgoing>Flow_18agn3l</bpmn:outgoing>
-      <bpmn:outgoing>Flow_0u0an24</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_13gvu72" sourceRef="Activity_1cvhcqk" targetRef="Gateway_0apnq6g" />
+    <bpmn:endEvent id="Event_0yrj8d2" name="Solicitud Ambiental Finalizada">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_09bzhlz</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="Activity_1du16bi" name="Respuesta Final" camunda:assignee="Usuario">
+      <bpmn:incoming>Flow_18agn3l</bpmn:incoming>
+      <bpmn:outgoing>Flow_09bzhlz</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Tramite">
@@ -176,6 +176,9 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0apnq6g_di" bpmnElement="Gateway_0apnq6g" isMarkerVisible="true">
         <dc:Bounds x="1505" y="623" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1581" y="638" width="59" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1maap0b_di" bpmnElement="Flow_1maap0b">
         <di:waypoint x="288" y="190" />
