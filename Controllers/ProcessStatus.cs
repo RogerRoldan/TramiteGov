@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using TramiteGov.Models;
 
 namespace TramiteGov.Controllers
 {
@@ -8,8 +9,17 @@ namespace TramiteGov.Controllers
     [ApiController]
     public class ProcessStatus : ControllerBase
     {
+        static string CamundaUrl;
+        static string BaseUrl;
+
+        public ProcessStatus()
+        {
+            CamundaUrl = CredencialEnvironment.GetCamundaUrl();
+            BaseUrl = CamundaUrl + "/process-instance/";
+        }
+
+
         HttpClient client = new HttpClient();
-        string BaseUrl = "http://localhost:8080/engine-rest/process-instance/";
 
         //Conocer el estado de una instancia de proceso en que parte se encuentra
         [HttpGet("{idInstanced}")]
@@ -19,7 +29,6 @@ namespace TramiteGov.Controllers
             var response = client.GetAsync(Url).Result.Content.ReadAsStringAsync().Result;
             var ResponseRequest = JsonConvert.DeserializeObject<dynamic>(response);
             
-
             if (ResponseRequest.type == "InvalidRequestException")
             {
                 return NotFound();

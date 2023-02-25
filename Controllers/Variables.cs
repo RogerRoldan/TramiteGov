@@ -11,9 +11,17 @@ namespace TramiteGov.Controllers
     [ApiController]
     public class Variables : ControllerBase
     {
-        HttpClient client = new HttpClient();        
-        string BaseUrl = "http://localhost:8080/engine-rest/process-instance/";
+        string CamundaUrl;
+        string BaseUrl;
 
+        public Variables()
+        {
+            CamundaUrl = CredencialEnvironment.GetCamundaUrl();
+            BaseUrl = CamundaUrl + "/process-instance/";
+        }
+
+        HttpClient client = new HttpClient();        
+        
         //Obtener variables de una instancia de proceso
         [HttpGet("{idInstanced}")]
         public dynamic GetVariablesId(string idInstanced)

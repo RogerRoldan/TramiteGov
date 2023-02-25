@@ -12,8 +12,16 @@ namespace TramiteGov.Controllers
     [ApiController]
     public class Task : ControllerBase
     {
+        string CamundaUrl;
+        string BaseUrl;
+
+        public Task()
+        {
+            CamundaUrl = CredencialEnvironment.GetCamundaUrl();
+            BaseUrl = CamundaUrl + "/task";
+        }
+
         HttpClient client = new HttpClient();
-        string BaseUrl = "http://localhost:8080/engine-rest/task";
         
         //Obtener informacion de una instancia de proceso
         [HttpGet("{idInstanced}")]

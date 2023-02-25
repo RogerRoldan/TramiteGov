@@ -32,11 +32,9 @@
       </bpmn:lane>
       <bpmn:lane id="Lane_1wufxlp" name="Asesor de tramites">
         <bpmn:flowNodeRef>Activity_01el378</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_0cux3id</bpmn:flowNodeRef>
         <bpmn:childLaneSet id="LaneSet_1jceygw">
           <bpmn:lane id="Lane_1ex8oeu">
             <bpmn:flowNodeRef>Activity_01el378</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Activity_0cux3id</bpmn:flowNodeRef>
           </bpmn:lane>
         </bpmn:childLaneSet>
       </bpmn:lane>
@@ -52,7 +50,7 @@
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:sequenceFlow id="Flow_1maap0b" sourceRef="StartEvent_1" targetRef="Activity_01el378" />
-    <bpmn:sequenceFlow id="Flow_0tpk49s" sourceRef="Activity_01el378" targetRef="Activity_0cux3id" />
+    <bpmn:sequenceFlow id="Flow_0tpk49s" sourceRef="Activity_01el378" targetRef="Activity_1emnqjc" />
     <bpmn:sequenceFlow id="Flow_04xvhry" sourceRef="Activity_1emnqjc" targetRef="Activity_1v3coe4" />
     <bpmn:startEvent id="StartEvent_1" name="Se radica la solicitud de licencia ambiental">
       <bpmn:outgoing>Flow_1maap0b</bpmn:outgoing>
@@ -71,6 +69,14 @@
     </bpmn:exclusiveGateway>
     <bpmn:userTask id="Activity_1v3coe4" name="Informe sobre respuesta del tramite" camunda:assignee="${Tecnico}">
       <bpmn:documentation>/formularioRtramite</bpmn:documentation>
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="nombre" label="Nombre" type="string" />
+          <camunda:formField id="apellidos" label="Apellidos" type="string" />
+          <camunda:formField id="tipo_licencia" label="Tipo de Licencia" type="string" />
+          <camunda:formField id="Respuesta" label="Respuesta" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_04xvhry</bpmn:incoming>
       <bpmn:incoming>Flow_0xu97ex</bpmn:incoming>
       <bpmn:outgoing>Flow_12e4538</bpmn:outgoing>
@@ -78,13 +84,36 @@
     <bpmn:sequenceFlow id="Flow_09bzhlz" sourceRef="Activity_1du16bi" targetRef="Event_0yrj8d2" />
     <bpmn:userTask id="Activity_01el378" name="Asignación de grupo Técnico" camunda:assignee="AsesorTramites">
       <bpmn:documentation>/formularioAgrupo</bpmn:documentation>
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="GrupoTecnico" label="Grupo Tecnico" type="enum" defaultValue="yes">
+            <camunda:value id="GrupoUno" name="Grupo Uno" />
+            <camunda:value id="GrupoDos" name="GrupoDos" />
+            <camunda:value id="GrupoTres" name="GrupoTres" />
+          </camunda:formField>
+          <camunda:formField id="nombre" label="Nombre" type="string" />
+          <camunda:formField id="apellido" label="Apellidos" />
+          <camunda:formField id="tipo_licencia" />
+        </camunda:formData>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_1maap0b</bpmn:incoming>
       <bpmn:outgoing>Flow_0tpk49s</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="Activity_1emnqjc" name="Asignación de Técnico" camunda:assignee="${GrupoTecnico}">
       <bpmn:documentation>/formularioAtecnico</bpmn:documentation>
-      <bpmn:extensionElements />
-      <bpmn:incoming>Flow_0e8c0cm</bpmn:incoming>
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="Tecnico" label="Tecnico" type="enum">
+            <camunda:validation />
+            <camunda:value id="TecnicoUno" name="Tecnico Uno" />
+            <camunda:value id="Tecnico Dos" name="Tecnico Dos" />
+            <camunda:value id="TecnicoTres" name="Tecnico Tres" />
+          </camunda:formField>
+          <camunda:formField id="nombre" label="Nombre" type="string" />
+          <camunda:formField id="apellido" label="Apellido" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0tpk49s</bpmn:incoming>
       <bpmn:outgoing>Flow_04xvhry</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_13gvu72" sourceRef="Activity_1cvhcqk" targetRef="Gateway_0apnq6g" />
@@ -95,6 +124,16 @@
     </bpmn:exclusiveGateway>
     <bpmn:userTask id="Activity_1cvhcqk" name="Aprobación de respuesta" camunda:assignee="${GrupoTecnico}">
       <bpmn:documentation>/formularioApRespuesta</bpmn:documentation>
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="Respuesta" label="Respuesta" type="string" />
+          <camunda:formField id="JefeRespuesta" label="Aprobacion" type="enum">
+            <camunda:value id="yes" name="Si" />
+            <camunda:value id="no" name="No" />
+          </camunda:formField>
+          <camunda:formField id="nombre" label="Nombre" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_12e4538</bpmn:incoming>
       <bpmn:outgoing>Flow_13gvu72</bpmn:outgoing>
     </bpmn:userTask>
@@ -105,11 +144,6 @@
     <bpmn:userTask id="Activity_1du16bi" name="Respuesta Final" camunda:assignee="Usuario">
       <bpmn:incoming>Flow_18agn3l</bpmn:incoming>
       <bpmn:outgoing>Flow_09bzhlz</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:sequenceFlow id="Flow_0e8c0cm" sourceRef="Activity_0cux3id" targetRef="Activity_1emnqjc" />
-    <bpmn:userTask id="Activity_0cux3id" name="revision" camunda:assignee="${AsesorTramites}">
-      <bpmn:incoming>Flow_0tpk49s</bpmn:incoming>
-      <bpmn:outgoing>Flow_0e8c0cm</bpmn:outgoing>
     </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -152,16 +186,6 @@
           <dc:Bounds x="227" y="215" width="88" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1dub6o7_di" bpmnElement="Activity_1du16bi">
-        <dc:Bounds x="1790" y="170" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0yrj8d2_di" bpmnElement="Event_0yrj8d2">
-        <dc:Bounds x="1992" y="192" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1985" y="235" width="51" height="40" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0azhue4_di" bpmnElement="Gateway_0azhue4" isMarkerVisible="true">
         <dc:Bounds x="1150" y="1015" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -177,29 +201,37 @@
         <dc:Bounds x="840" y="618" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0ioc1oq_di" bpmnElement="Activity_1cvhcqk">
-        <dc:Bounds x="1230" y="608" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0apnq6g_di" bpmnElement="Gateway_0apnq6g" isMarkerVisible="true">
         <dc:Bounds x="1505" y="623" width="50" height="50" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="1581" y="638" width="59" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0go5yrf_di" bpmnElement="Activity_0cux3id">
-        <dc:Bounds x="575" y="450" width="100" height="80" />
+      <bpmndi:BPMNShape id="Activity_0ioc1oq_di" bpmnElement="Activity_1cvhcqk">
+        <dc:Bounds x="1230" y="608" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0yrj8d2_di" bpmnElement="Event_0yrj8d2">
+        <dc:Bounds x="1992" y="192" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1985" y="235" width="51" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1dub6o7_di" bpmnElement="Activity_1du16bi">
+        <dc:Bounds x="1790" y="170" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1maap0b_di" bpmnElement="Flow_1maap0b">
         <di:waypoint x="288" y="190" />
-        <di:waypoint x="369" y="190" />
-        <di:waypoint x="369" y="430" />
+        <di:waypoint x="344" y="190" />
+        <di:waypoint x="344" y="430" />
         <di:waypoint x="400" y="430" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0tpk49s_di" bpmnElement="Flow_0tpk49s">
         <di:waypoint x="500" y="430" />
         <di:waypoint x="625" y="430" />
-        <di:waypoint x="625" y="450" />
+        <di:waypoint x="625" y="658" />
+        <di:waypoint x="840" y="658" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_04xvhry_di" bpmnElement="Flow_04xvhry">
         <di:waypoint x="890" y="698" />
@@ -211,10 +243,6 @@
         <di:waypoint x="1175" y="930" />
         <di:waypoint x="1175" y="648" />
         <di:waypoint x="1230" y="648" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_09bzhlz_di" bpmnElement="Flow_09bzhlz">
-        <di:waypoint x="1890" y="210" />
-        <di:waypoint x="1992" y="210" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_18agn3l_di" bpmnElement="Flow_18agn3l">
         <di:waypoint x="1530" y="623" />
@@ -237,14 +265,13 @@
         <di:waypoint x="1080" y="1040" />
         <di:waypoint x="1080" y="970" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09bzhlz_di" bpmnElement="Flow_09bzhlz">
+        <di:waypoint x="1890" y="210" />
+        <di:waypoint x="1992" y="210" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_13gvu72_di" bpmnElement="Flow_13gvu72">
         <di:waypoint x="1330" y="648" />
         <di:waypoint x="1505" y="648" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0e8c0cm_di" bpmnElement="Flow_0e8c0cm">
-        <di:waypoint x="625" y="530" />
-        <di:waypoint x="625" y="658" />
-        <di:waypoint x="840" y="658" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

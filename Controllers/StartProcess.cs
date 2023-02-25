@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Immutable;
 using System.Text;
+using TramiteGov.Models;
 using TramitesGov.Models;
 
 namespace TramitesGov.Controllers
@@ -11,9 +12,17 @@ namespace TramitesGov.Controllers
     [ApiController]
     public class StartProcess : ControllerBase
     {
-            HttpClient client = new HttpClient();
-            string BaseUrl = "http://localhost:8080/engine-rest/process-definition/key/";
-            string NameProcess = "TramiteGov";
+        string CamundaUrl;
+        string BaseUrl;
+        string NameProcess;
+
+        public StartProcess()
+        {
+            CamundaUrl = CredencialEnvironment.GetCamundaUrl();
+            NameProcess = CredencialEnvironment.GetNameProcess();
+            BaseUrl = CamundaUrl + "/process-definition/key/";
+        }
+        HttpClient client = new HttpClient();
         
         //Iniciar una instancia de proceso
         [HttpPost]
