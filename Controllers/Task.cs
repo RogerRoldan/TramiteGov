@@ -64,7 +64,10 @@ namespace TramiteGov.Controllers
                     Id = task.id, 
                     Name = task.name, 
                     InstacedId = task.processInstanceId,
-                    description = task.description });
+                    description = task.description,
+                    Fecha = DateTime.Parse(task.created).ToString("dd/MM/yyyy"),
+                });
+                    
             }
             
             return Content(JsonConvert.SerializeObject(taskList), "application/json", Encoding.UTF8);

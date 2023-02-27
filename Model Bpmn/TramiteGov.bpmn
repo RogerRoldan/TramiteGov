@@ -57,10 +57,10 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_12e4538" sourceRef="Informe_respuesta_tramite" targetRef="Aprobacion_respuesta" />
     <bpmn:sequenceFlow id="Flow_18agn3l" name="Si" sourceRef="Gateway_0apnq6g" targetRef="Respuesta_Final">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${JefeRespuesta=="yes"}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${JefeRespuesta=="Si"}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0u0an24" name="No" sourceRef="Gateway_0apnq6g" targetRef="Gateway_0azhue4">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${JefeRespuesta=="no"}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${JefeRespuesta=="No"}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0xu97ex" sourceRef="Gateway_0azhue4" targetRef="Informe_respuesta_tramite" />
     <bpmn:exclusiveGateway id="Gateway_0azhue4">
