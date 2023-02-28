@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Roger Roldan\\Desktop\\Gov CorpoColombia\\TramiteGov\\TramiteGov.csproj": {}
+    "C:\\Users\\Roger Roldan\\Desktop\\Gov Tramites\\TramiteGov\\TramiteGov.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Roger Roldan\\Desktop\\Gov CorpoColombia\\TramiteGov\\TramiteGov.csproj": {
+    "C:\\Users\\Roger Roldan\\Desktop\\Gov Tramites\\TramiteGov\\TramiteGov.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Roger Roldan\\Desktop\\Gov CorpoColombia\\TramiteGov\\TramiteGov.csproj",
+        "projectUniqueName": "C:\\Users\\Roger Roldan\\Desktop\\Gov Tramites\\TramiteGov\\TramiteGov.csproj",
         "projectName": "TramiteGov",
-        "projectPath": "C:\\Users\\Roger Roldan\\Desktop\\Gov CorpoColombia\\TramiteGov\\TramiteGov.csproj",
+        "projectPath": "C:\\Users\\Roger Roldan\\Desktop\\Gov Tramites\\TramiteGov\\TramiteGov.csproj",
         "packagesPath": "C:\\Users\\Roger Roldan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Roger Roldan\\Desktop\\Gov CorpoColombia\\TramiteGov\\obj\\",
+        "outputPath": "C:\\Users\\Roger Roldan\\Desktop\\Gov Tramites\\TramiteGov\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Roger Roldan\\AppData\\Roaming\\NuGet\\NuGet.Config",

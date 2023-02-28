@@ -2,13 +2,13 @@
 {
     public class VariableModification
     {
-        public Dictionary<string, Atribute> modifications { get; set; }
+        public Dictionary<string, AtributeModification> modifications { get; set; }
         public void Add(string name, string value)
         {
-            modifications.Add(name, new Atribute { value = value});
+            modifications.Add(name, new AtributeModification { value = value});
         }
     }
-    public class Atribute
+    public class AtributeModification
     {
         public string value { get; set; }
     }
