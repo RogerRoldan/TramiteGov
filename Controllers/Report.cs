@@ -110,7 +110,8 @@ namespace TramiteGov.Controllers
                         name = item.name,
                         duration = TimeSpan.FromMilliseconds((double)item.duration).ToString(@"hh\:mm\:ss"),
                         assignee = item.assignee,
-                        status = status
+                        status = status,
+                        date = DateTime.Parse(item.startTime.ToString()).ToString("dd/MM/yyyy")
 
                     });
                 }
@@ -121,6 +122,54 @@ namespace TramiteGov.Controllers
                 return NotFound();
             }
         }
+
+        //reporte de las ultimas N° instancias de proceso suspendidas o terminadas de manera forzada
+        [HttpGet("StatusProcess/{nameprocess}/{amount}")]
+        public ActionResult GetStatusProcess(string nameprocess, int amount) {
+            string Url = BaseUrl + "/history/process-instance?sortBy=startTime&sortOrder=desc&maxResults=" + amount + "&processDefinitionKey=" + nameprocess;
+
+            var response = client.GetAsync(Url).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var ResponseContent = response.Content.ReadAsStringAsync().Result;
+                var json = JsonConvert.DeserializeObject<dynamic>(ResponseContent);
+                List<object> list = new List<object>();
+                foreach (var item in json)
+                {
+                    string status = item.state.ToString();
+
+                    switch (status)
+                    {
+                        case "COMPLETED":
+                            status = "Completado";
+                            break;
+                        case "ACTIVE":
+                            status = "Terminado";
+                            break;
+                        case "EXTERNALLY_TERMINATED":
+                            status = "Cancelado";
+                            break;
+                        default:
+                            status = "No definido";
+                            break;
+                    }
+
+                    list.Add(new
+                    {
+                        id = item.id,
+                        status = status,
+                        date = DateTime.Parse(item.startTime.ToString()).ToString("dd/MM/yyyy")
+                    });
+                }
+                return Content(JsonConvert.SerializeObject(list), "application/json", Encoding.UTF8);
+            }
+            else
+            {
+                return NotFound();
+            }
+
+        }
+
 
     }
 }
