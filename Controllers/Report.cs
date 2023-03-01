@@ -61,28 +61,65 @@ namespace TramiteGov.Controllers
                 var ResponseContent = response.Content.ReadAsStringAsync().Result;
                 var json = JsonConvert.DeserializeObject<dynamic>(ResponseContent);
                 float duration = 0;
-                int count = 1;
+                int count = duration >= 0 ? 1 : 0;
                 foreach (var item in json)
                 {
                     duration += float.Parse(item.durationInMillis.ToString());
                     count++;
                 }
-                duration = duration / 60000  /60 /(count-1);
-                duration = (float)Math.Round(duration, 1);
-            
-                var  durationInHours = new
-                    {
-                        durationInHours = duration
-                    };
+                duration = duration / count-1;
+                var durationHours = TimeSpan.FromMilliseconds((double)duration).ToString(@"hh\:mm\:ss");
+
+                var durationInHours = new
+                {
+                    durationInHours = durationHours
+                };
                 return Content(JsonConvert.SerializeObject(durationInHours), "application/json", Encoding.UTF8);
             }
             else
             {
                 return NotFound();
-            }
+            }     
+        }
 
-               
-            
+        //reporte de las ultimas actividades completadas y su duracion
+        [HttpGet("LastActivities/{nameProcess}/{amount}")]
+        public ActionResult GetLastActivities(string nameProcess, int amount)
+        {
+            string Url = BaseUrl + "/history/task?processDefinitionKey=" + nameProcess + "&finished=true&maxResults=" + amount + "&sortBy=startTime&sortOrder=desc";
+            var response = client.GetAsync(Url).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var ResponseContent = response.Content.ReadAsStringAsync().Result;
+                var json = JsonConvert.DeserializeObject<dynamic>(ResponseContent);
+                List<object> list = new List<object>();
+                foreach (var item in json)
+                {
+                    string status = "";
+                    if (item.deleteReason == "completed")
+                    {
+                        status = "Completada";
+                    }
+                    else
+                    {
+                        status = "Cancelada";
+                    }
+                    
+                    list.Add(new
+                    {                      
+                        name = item.name,
+                        duration = TimeSpan.FromMilliseconds((double)item.duration).ToString(@"hh\:mm\:ss"),
+                        assignee = item.assignee,
+                        status = status
+
+                    });
+                }
+                return Content(JsonConvert.SerializeObject(list), "application/json", Encoding.UTF8);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
     }
